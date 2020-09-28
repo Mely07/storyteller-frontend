@@ -3,17 +3,21 @@ import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk'
-import rootReducer from './reducers/manageRestaurant';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers/rootReducer';
+//import {composeWithDevTools} from 'redux-devtools-extension';
 
-import App from './components /App';
+import App from './App';
 
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(
-    applyMiddleware(thunk)
-  )
-);
+// const store = createStore(
+//   rootReducer,
+//   composeWithDevTools(
+//     rootReducer,
+//     applyMiddleware(thunk)
+//   )
+// );
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
