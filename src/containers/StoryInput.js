@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
+import { addStory } from '../actions/storiesActions'
 
 class StoryInput extends Component {
     
@@ -15,8 +17,9 @@ class StoryInput extends Component {
     }
 
     handleOnSubmit = (e) => {
+        console.log('click')
         e.preventDefault();
-        //this.props.addStory(this.state)
+        this.props.addStory(this.state)
     }
 
     render() {
@@ -44,4 +47,4 @@ class StoryInput extends Component {
     }
 }
 
-export default StoryInput;
+export default connect(null, { addStory})(StoryInput);
