@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import { addStory } from '../actions/storiesActions'
+import { addStory } from '../../actions/storiesActions'
 
 class StoryInput extends Component {
     

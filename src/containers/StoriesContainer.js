@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import StoryInput from './StoryInput';
-import Stories from'./Stories'
 import {fetchStories} from '../actions/storiesActions'
 import {connect} from 'react-redux'
+import StoryInput from '../components /stories/StoryInput';
+import Stories from '../components /stories/Stories';
 
 class StoriesContainer extends Component {
 
@@ -13,7 +13,7 @@ class StoriesContainer extends Component {
     render() {
         return (
             <div>
-                <StoryInput/>
+                <StoryInput />
                 <Stories />
             </div>
         );
