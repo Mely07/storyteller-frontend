@@ -6,7 +6,7 @@ class Stories extends Component {
     render() {
         return (
             <div>
-                {this.props.stories.map(story => <li><Story story={story}/></li> )}
+                {this.props.stories.map(story => <li key={story.id}><Story story={story}/></li> )}
             </div>
         );
     }

@@ -8,15 +8,15 @@ class Story extends Component {
     //const story = this.props.story;
 
     return (
-
       <div>
           <li>
             {story.opening_line}
-            <CommentsContainer />
+            <CommentsContainer story_id={story.id}/>
           </li>
       </div>
     );
   }
 };
+
 
 export default Story;

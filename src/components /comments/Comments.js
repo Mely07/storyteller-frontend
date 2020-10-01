@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import Comment from './Comment'
+import {connect} from 'react-redux'
 
 class Comments extends Component {
     render() {
         return (
             <div>
-                {this.props.comments.map(comment => <Comment comment={comment} />)} 
+                {this.props.comments.filter(comment => comment.story_id === this.props.story_id).map(comment => <Comment comment={comment} />)} 
             </div>
         );
     }
 }
 
-//connect ; mapStateToProps
+const mapStateToProps = state => {
+    return { comments: state.comments }
+}
 
-export default Comments;
+export default connect(mapStateToProps)(Comments);
