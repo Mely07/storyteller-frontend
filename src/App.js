@@ -1,11 +1,10 @@
 import React from 'react';
-import StoriesContainer from './containers/StoriesContainer';
-
+import Router from './components /Router';
 
 const App = () => {
   return (
     <div>
-      <StoriesContainer />
+      <Router />
     </div>
   );
 };

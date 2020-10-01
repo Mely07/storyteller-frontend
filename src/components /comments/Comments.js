@@ -5,9 +5,10 @@ import {connect} from 'react-redux'
 class Comments extends Component {
     render() {
         return (
-            <div>
-                {this.props.comments.filter(comment => comment.story_id === this.props.story_id).map(comment => <Comment comment={comment} />)} 
-            </div>
+            <ul>
+                {this.props.comments.map(comment => <li key={comment.id}> <Comment comment={comment} /> </li>)} 
+
+            </ul>
         );
     }
 }

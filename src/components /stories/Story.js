@@ -9,10 +9,8 @@ class Story extends Component {
 
     return (
       <div>
-          <li>
-            {story.opening_line}
-            <CommentsContainer story_id={story.id}/>
-          </li>
+        {story.opening_line} - {story.genre}
+        <CommentsContainer story_id={story.id}/>
       </div>
     );
   }

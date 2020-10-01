@@ -17,7 +17,6 @@ class StoryInput extends Component {
     }
 
     handleOnSubmit = (e) => {
-        console.log('click')
         e.preventDefault();
         this.props.addStory(this.state)
     }
@@ -33,6 +32,7 @@ class StoryInput extends Component {
                 <br />
                 <label>Genre:</label>
                 <select value={this.state.genre} onChange={this.handleOnChange} name="genre">
+                    <option> -- Select an option...</option>
                     <option>Comedy</option>
                     <option>Horror</option>
                     <option>Action</option>
