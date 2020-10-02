@@ -28,7 +28,7 @@ class StoryInput extends Component {
                 <input type="text" value={this.state.opening_line} onChange={this.handleOnChange} name="opening_line"/>
                 <br />
                 <label>Image:</label>
-                <input type="url" value={this.state.text} onChange={this.handleOnChange} name="image"/>
+                <input type="url" value={this.state.image} onChange={this.handleOnChange} name="image"/>
                 <br />
                 <label>Genre:</label>
                 <select value={this.state.genre} onChange={this.handleOnChange} name="genre">
