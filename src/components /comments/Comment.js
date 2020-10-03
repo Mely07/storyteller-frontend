@@ -7,6 +7,8 @@ class Comment extends Component {
                 text: {this.props.comment.text}
             <br></br>                
                 story_id: {this.props.comment.story_id}
+            <br></br>   
+                comment_id: {this.props.comment.id}
             </div>
         );
     }
