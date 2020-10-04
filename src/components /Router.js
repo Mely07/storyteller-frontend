@@ -12,8 +12,8 @@ const Router = () => {
             
             <Switch>
                 <Route exact path='/' component={Home} />
-                <Route path='/stories' render={() => <StoriesContainer/>} />
-                <Redirect from="*" to="/index.html" />
+                <Route path='/stories' render={routerProps => <StoriesContainer {...routerProps} />} />
+                <Redirect from="*" to="/" />
             </Switch>
         </div>
     );

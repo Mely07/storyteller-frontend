@@ -3,8 +3,8 @@ import StoryCard from './StoryCard'
 import {Link} from 'react-router-dom';
 
 const Stories = ({stories}) => {
-    const renderStories = Object.keys(stories).map(storyId =>
-        <Link key={storyId} to={`/stories/${storyId}`}><StoryCard story={stories[storyId]}/></Link> //{stories[storyID].opening_line}
+    const renderStories = stories.map(story =>
+        <Link key={story.id} to={`/stories/${story.id}`}><StoryCard story={stories.find(s => s.id == story.id)}/></Link> //{stories[storyID].opening_line}
     );
 
     return (

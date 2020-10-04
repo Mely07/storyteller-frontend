@@ -1,12 +1,15 @@
 import React from 'react';
 import CommentsContainer from '../../containers/CommentsContainer';
 
-const Story = ({match, stories}) => {
+// Need to convert to class?... check if stories is null/empty, if so, then load story from web service using the storyId passed in
 
+const Story = ({match, stories}) => {
+  console.log('damely', match);
   return (
+    
     <div>
-      <h3>{ stories[match.params.storyId].opening_line}</h3>
-      <CommentsContainer story_id={stories[match.params.storyId].id} />
+      <h3>{ stories.find(s => s.id == match.params.storyId).opening_line}</h3>
+      <CommentsContainer story_id={stories.find(s => s.id == match.params.storyId).id} />
     </div>
   );
 };
