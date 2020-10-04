@@ -1,19 +1,19 @@
 import React from 'react';
-import { Card } from 'react-bootstrap'
+import { Card } from 'react-bootstrap';
 
 const StoryCard = ({story}) => {
     return (
-        //Link to Story 
-        <div>
+
             <Card style={cardStyle}>
                 <Card.Body>
                     <Card.Img src={story.image} style={imageStyle}/> 
-                    {/* <Card.Title>{story.opening_line}</Card.Title> */}
                 </Card.Body>
             </Card>
-        </div>
+
     );
 };
+
+
 
 export default StoryCard;
 

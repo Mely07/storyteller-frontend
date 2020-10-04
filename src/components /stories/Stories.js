@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux'
 import StoryCard from './StoryCard'
+import {Link} from 'react-router-dom';
 
-class Stories extends Component {
-    render() {
-        return (
-            <ul>
-                {this.props.stories.map(story => <li key={story.id}><StoryCard story={story}/></li> )}
-            </ul>
-        );
-    }
-}
+const Stories = ({stories}) => {
+    const renderStories = Object.keys(stories).map(storyId =>
+        <Link key={storyId} to={`/stories/${storyId}`}><StoryCard story={stories[storyId]}/></Link> //{stories[storyID].opening_line}
+    );
 
-const mapStateToProps = state => {
-    return { stories: state.stories }
-}
+    return (
+        <div>
+            {renderStories}
+        </div>
+    );
+};
 
-export default connect(mapStateToProps)(Stories);
+export default Stories;

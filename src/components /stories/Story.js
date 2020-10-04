@@ -1,20 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import CommentsContainer from '../../containers/CommentsContainer';
 
-class Story extends Component {
+const Story = ({match, stories}) => {
 
-  render() {
-    const { story } = this.props;
-    //const story = this.props.story;
-
-    return (
-      <div>
-        {story.opening_line} - {story.genre} - {story.id}
-        <CommentsContainer story_id={story.id}/> 
-      </div>
-    );
-  }
+  return (
+    <div>
+      <h3>{ stories[match.params.storyId].opening_line}</h3>
+      <CommentsContainer story_id={stories[match.params.storyId].id} />
+    </div>
+  );
 };
-
 
 export default Story;

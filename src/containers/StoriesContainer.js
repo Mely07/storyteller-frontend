@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {fetchStories} from '../actions/storiesActions'
 import {connect} from 'react-redux'
 import StoryInput from '../components /stories/StoryInput';
-import Stories from '../components /stories/Stories';
+import StoriesPage from '../components /stories/StoriesPage';
+import {Redirect, Switch, Route} from 'react-router-dom'
+
 
 class StoriesContainer extends Component {
 
@@ -14,11 +16,19 @@ class StoriesContainer extends Component {
         return (
             <div>
                 <StoryInput />
-                <Stories />
+
+                <Switch>
+                    <Route  path='/stories' render={routerProps => <StoriesPage {...routerProps} stories={this.props.stories}/>} />
+                    <Redirect from="*" to="/index.html" />
+                </Switch>
             </div>
-        );
+        ); 
     }
 }
 
-export default connect(null, { fetchStories })(StoriesContainer); 
+const mapStateToProps = state => {
+    return { stories: state.stories }
+}
+
+export default connect(mapStateToProps, { fetchStories })(StoriesContainer); 
 

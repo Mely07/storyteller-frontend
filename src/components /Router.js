@@ -1,6 +1,5 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom'
-import CommentsContainer from '../containers/CommentsContainer';
+import {Redirect, Switch, Route} from 'react-router-dom'
 import StoriesContainer from '../containers/StoriesContainer';
 import Home from './Home';
 import Navbar from './Navbar';
@@ -13,8 +12,8 @@ const Router = () => {
             
             <Switch>
                 <Route exact path='/' component={Home} />
-                <Route exact path='/stories' component={StoriesContainer} />
-                <Route exact path='/comments' component={CommentsContainer} />
+                <Route path='/stories' render={() => <StoriesContainer/>} />
+                <Redirect from="*" to="/index.html" />
             </Switch>
         </div>
     );
