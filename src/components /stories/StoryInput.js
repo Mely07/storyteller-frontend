@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import { addStory } from '../../actions/storiesActions'
 
 class StoryInput extends Component {
-    
+
     state = {
         opening_line: '',
         image: '',
         genre: '',
-       // author:
+        // author:
     }
 
     handleOnChange = (e) => {
         let name = e.target.name
-        this.setState({[name]: e.target.value})
+        this.setState({ [name]: e.target.value })
+
     }
 
     handleOnSubmit = (e) => {
@@ -23,28 +24,34 @@ class StoryInput extends Component {
 
     render() {
         return (
-            <form onSubmit={(event) => this.handleOnSubmit(event)}>
-                <label>Opening Line:</label>
-                <input type="text" value={this.state.opening_line} onChange={this.handleOnChange} name="opening_line"/>
-                <br />
-                <label>Image:</label>
-                <input type="url" value={this.state.image} onChange={this.handleOnChange} name="image"/>
-                <br />
-                <label>Genre:</label>
-                <select value={this.state.genre} onChange={this.handleOnChange} name="genre">
-                    <option> -- Select an option...</option>
-                    <option>Comedy</option>
-                    <option>Horror</option>
-                    <option>Action</option>
-                    <option>Fantasy</option>
-                </select>
-                <br />
-                {/* <input type="text" value={this.state.author} onChange={this.handleOnChange} name="author"/>
+            <div className="col-md-6 order-md-1">
+                <form className="mt-2 center">
+                    <div className="mb-3">
+                        <input placeholder="Opening line here..." className="form-control" type="text" value={this.state.opening_line} onChange={this.handleOnChange} name="opening_line" />
+                    </div>
+
+                    <div className="mb-3">
+                        <input placeholder="Image URL" className="form-control" type="url" value={this.state.image} onChange={this.handleOnChange} name="image" />
+                    </div>
+
+                    <div className="mb-3">
+                        <select className="custom-select d-block w-100" value={this.state.genre} onChange={this.handleOnChange} name="genre">
+                            <option> -- Select a genre...</option>
+                            <option>Comedy</option>
+                            <option>Horror</option>
+                            <option>Action</option>
+                            <option>Fantasy</option>
+                        </select>
+                    </div>
+
+                    {/* <input type="text" value={this.state.author} onChange={this.handleOnChange} name="author"/>
                 <br /> */}
-                <input type="submit"/>
-            </form>
+                    <button className="btn btn-secondary my-2" onClick={(event) => this.handleOnSubmit(event)}> Submit </button>
+                </form>
+            </div>
         );
     }
 }
 
-export default connect(null, { addStory})(StoryInput);
+export default connect(null, { addStory })(StoryInput);
+

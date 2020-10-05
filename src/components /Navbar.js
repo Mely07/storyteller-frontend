@@ -1,33 +1,20 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Navbar, Nav } from 'react-bootstrap';
 
-const link = {
-    //styling 
-}  
 
-const Navbar = () => {
-    return (
-    <div className="navbar">
-        <NavLink
-          to="/"
-          exact
-          style={link}
-          activeStyle={{
-           color: 'red'
-          }}
-        >Home</NavLink>
+const NavBar = () => {
+  return (
+    <Navbar bg="dark" variant="dark">
 
-        <NavLink
-          to="/stories"
-          exact
-          style={link}
-          activeStyle={{
-            color: 'red'
-          }}
-        >Stories</NavLink>
-    </div>
-    );
+      <Navbar.Brand href="#home"> ST </Navbar.Brand>
+
+      <Nav className="col-sm-3">
+        <Nav.Link href='/'>Home</Nav.Link>
+        <Nav.Link href="/stories">Stories</Nav.Link>
+      </Nav>
+
+    </Navbar>
+  );
 };
 
-export default Navbar;
-
+export default NavBar;

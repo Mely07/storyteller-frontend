@@ -2,13 +2,13 @@ import React from 'react';
 import {Redirect, Switch, Route} from 'react-router-dom'
 import StoriesContainer from '../containers/StoriesContainer';
 import Home from './Home';
-import Navbar from './Navbar';
+import NavBar from './Navbar';
 
 
 const Router = () => {
     return (
         <div>
-            <Navbar /> 
+            <NavBar /> 
             
             <Switch>
                 <Route exact path='/' component={Home} />

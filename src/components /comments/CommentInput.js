@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import { addComment } from '../../actions/commentsActions'
 
 class CommentInput extends Component {
-    
+
     state = {
         story_id: this.props.story_id,
         //author: '',
@@ -12,7 +12,7 @@ class CommentInput extends Component {
 
     handleOnChange = (e) => {
         let name = e.target.name
-        this.setState({[name]: e.target.value})
+        this.setState({ [name]: e.target.value })
     }
 
     handleOnSubmit = (e) => {
@@ -22,14 +22,16 @@ class CommentInput extends Component {
 
     render() {
         return (
-            <form onSubmit={(e) => this.handleOnSubmit(e)}> 
-                <label>Text:</label>
-                <input type="text" value={this.state.text} onChange={this.handleOnChange} name="text"/>
-                <br />
-                <input type="submit"/>
-            </form>
+            <div className="shadow-sm">
+                <form type="text">
+                    <input className="card-text " placeholder="Enter your lines here..." value={this.state.text} onChange={this.handleOnChange} name="text" />
+                    <br />
+                    <button className="btn btn-secondary my-2" onClick={(e) => this.handleOnSubmit(e)}> Submit </button>
+                </form>
+            </div>
         );
     }
 }
 
-export default connect(null, { addComment})(CommentInput);
+export default connect(null, { addComment })(CommentInput);
+
