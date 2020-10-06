@@ -42,3 +42,28 @@ export const increaseLikes = (commentId) => {
             })
     }
 }
+
+export const increaseDislikes = (commentId) => {
+    return (dispatch) => {
+        fetch('http://localhost:3000/comments/' + commentId)
+            .then(resp => resp.json())
+            .then(json => {
+                let formData = {
+                    "dislikes": json.dislikes + 1
+                };
+
+                let configObj = {
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                };
+
+                fetch("http://localhost:3000/comments/" + commentId, configObj)
+                    .then(resp => resp.json())
+                    .then(comment => dispatch({ type: 'INCREASE_DISLIKES', payload: comment }))
+            })
+    }
+}

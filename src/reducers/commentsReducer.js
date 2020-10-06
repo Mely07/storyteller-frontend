@@ -5,8 +5,7 @@ export const commentsReducer = (state = [], action) => {
 
         case 'ADD_COMMENT':
             return [...state, action.payload]
-
-            
+        
         case 'INCREASE_LIKES':
             return state.map(comment => {
                 if (comment.id == action.payload.id) {
@@ -18,6 +17,14 @@ export const commentsReducer = (state = [], action) => {
             // const index = state.findIndex(comment => comment.id == action.payload.id);
             // state[index] = action.payload;
             // return [...state];
+
+        case 'INCREASE_DISLIKES':
+            return state.map(comment => {
+                if (comment.id == action.payload.id) {
+                    return action.payload;
+                }
+                return comment;
+            });
 
         default:
             return state;
