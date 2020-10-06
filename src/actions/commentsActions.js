@@ -92,3 +92,28 @@ export const increaseFunnyRating= (commentId) => {
             })
     }
 }
+
+export const increaseScaryRating= (commentId) => {
+    return (dispatch) => {
+        fetch('http://localhost:3000/comments/' + commentId)
+            .then(resp => resp.json())
+            .then(json => {
+                let formData = {
+                    "scary_rating": json.scary_rating + 1
+                };
+
+                let configObj = {
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                };
+
+                fetch("http://localhost:3000/comments/" + commentId, configObj)
+                    .then(resp => resp.json())
+                    .then(comment => dispatch({ type: 'INCREASE_SCARY_RATING', payload: comment }))
+            })
+    }
+}
