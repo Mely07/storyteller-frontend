@@ -26,6 +26,15 @@ export const commentsReducer = (state = [], action) => {
                 return comment;
             });
 
+        case 'INCREASE_FUNNY_RATING':
+            return state.map(comment => {
+                if (comment.id == action.payload.id) {
+                    return action.payload;
+                }
+                return comment;
+            });
+        
+
         default:
             return state;
     }
