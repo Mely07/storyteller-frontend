@@ -1,20 +1,36 @@
 import React, { Component } from 'react';
-import { fetchStories } from '../actions/storiesActions'
+import { fetchStories, filterByGenre } from '../actions/storiesActions'
 import { connect } from 'react-redux'
 import { Redirect, Switch, Route } from 'react-router-dom'
 import Story from '../components /stories/Story';
 import Stories from '../components /stories/Stories';
 
 
+
 class StoriesContainer extends Component {
     componentDidMount() {
-        // Refresh error? This is not called when going directy to a story (EX: http://localhost:3003/stories/1)
         this.props.fetchStories()
+    }
+
+    handleOnChange = (e) => {
+        let genre = e.target.value
+        this.props.filterByGenre(genre)
     }
 
     render() {
         return (
             <div>
+                Filter By Genre:
+                <div className="mb-3">
+                    <select className="custom-select d-block w-100" onChange={this.handleOnChange}>
+                        <option> -- Select a genre...</option>
+                        <option>Comedy</option>
+                        <option>Horror</option>
+                        <option>Action</option>
+                        <option>Fantasy</option>
+                    </select>
+                </div>
+
                 <Switch>
                     <Route exact path={`${this.props.match.url}/:storyId`} render={routerProps => <Story {...routerProps} stories={this.props.stories} />} />
                     <Route path='/stories' render={routerProps => <Stories stories={this.props.stories} />} />
@@ -29,5 +45,5 @@ const mapStateToProps = state => {
     return { stories: state.stories }
 }
 
-export default connect(mapStateToProps, { fetchStories })(StoriesContainer);
+export default connect(mapStateToProps, { fetchStories, filterByGenre })(StoriesContainer);
 

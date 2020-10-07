@@ -17,3 +17,11 @@ export const addStory = (story) => {
         .then(story=> dispatch({ type: 'ADD_STORY', payload: story}))
     }
 }
+
+export const filterByGenre = (genre) => {
+    return (dispatch) => {
+        fetch('http://localhost:3000/stories')
+        .then(resp => resp.json())
+        .then(stories => dispatch({ type: 'FILTER_STORIES', payload: stories.filter(story => story.genre == genre)}))
+    }
+}

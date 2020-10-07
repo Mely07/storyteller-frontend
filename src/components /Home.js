@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
-const Home = () => {
-return (
-    <div class="jumbotron text-center bg-white">
+class Home extends Component {
+
+    render() {
+        return (
+            <div class="jumbotron text-center bg-white">
         <div class="container">
-            <h1>Hello!</h1>
-            <p class="lead text-muted">Story Teller.<br></br> An app created for the auhtor in you.</p>
-            <button class="btn btn-secondary my-2">NEXT</button>
+            <h1>Story Teller</h1>
+            <p class="lead text-muted">An app created for the author in you.</p>
+            <button class="btn btn-secondary my-2"> <Link to="/stories"> Stories </Link></button>
         </div>
     </div>
-    );
-};
+        );
+    }
+}
 
 export default Home;
