@@ -4,7 +4,7 @@ import { Card } from 'react-bootstrap';
 const StoryCard = ({ story }) => {
     return (
         <Card style={cardStyle}>
-            <Card.Img src={story.image} style={cardStyle, imageStyle} />
+            <Card.Img src={story.image} style={imageStyle} />
             <Card.ImgOverlay>
                 <Card.Text>{story.opening_line}</Card.Text>
             </Card.ImgOverlay>

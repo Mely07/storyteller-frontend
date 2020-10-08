@@ -5,8 +5,6 @@ import { Redirect, Switch, Route } from 'react-router-dom'
 import Story from '../components /stories/Story';
 import Stories from '../components /stories/Stories';
 
-
-
 class StoriesContainer extends Component {
     componentDidMount() {
         this.props.fetchStories()
@@ -18,6 +16,8 @@ class StoriesContainer extends Component {
     }
 
     render() {
+        //console.log(this.props.location.state.users.username) //
+        console.log(this.props.user.username)
         return (
             <div>
                 Filter By Genre:
@@ -42,7 +42,10 @@ class StoriesContainer extends Component {
 }
 
 const mapStateToProps = state => {
-    return { stories: state.stories }
+    return {
+        stories: state.stories,
+        user: state.users
+    }
 }
 
 export default connect(mapStateToProps, { fetchStories, filterByGenre })(StoriesContainer);
