@@ -16,10 +16,11 @@ class StoriesContainer extends Component {
     }
 
     render() {
-        //console.log(this.props.location.state.users.username) //
-        console.log(this.props.user.username)
+        // console.log(this.props.location.state.users.username) 
         return (
             <div>
+                Welcome, <p>{this.props.user.username}</p>
+
                 Filter By Genre:
                 <div className="mb-3">
                     <select className="custom-select d-block w-100" onChange={this.handleOnChange}>
@@ -33,7 +34,7 @@ class StoriesContainer extends Component {
 
                 <Switch>
                     <Route exact path={`${this.props.match.url}/:storyId`} render={routerProps => <Story {...routerProps} stories={this.props.stories} />} />
-                    <Route path='/stories' render={routerProps => <Stories stories={this.props.stories} />} />
+                    <Route path="/stories" render={routerProps => <Stories stories={this.props.stories} />} />
                     <Redirect from="*" to="/index.html" />
                 </Switch>
             </div>

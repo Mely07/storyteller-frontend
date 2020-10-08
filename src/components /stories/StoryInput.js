@@ -8,7 +8,7 @@ class StoryInput extends Component {
         opening_line: '',
         image: '',
         genre: '',
-        // author:
+        author: this.props.user
     }
 
     handleOnChange = (e) => {
@@ -53,5 +53,11 @@ class StoryInput extends Component {
     }
 }
 
-export default connect(null, { addStory })(StoryInput);
+const mapStateToProps = state => {
+    return {
+        user: state.users,
+    }
+}
+
+export default connect(mapStateToProps, { addStory })(StoryInput);
 

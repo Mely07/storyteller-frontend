@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createCurrentUser } from '../actions/usersActions';
-import StoriesContainer from '../containers/StoriesContainer';
-import Stories from './stories/Stories';
-import { Redirect, Route } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 class LogIn extends Component {
     state = {

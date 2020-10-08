@@ -9,6 +9,7 @@ const Story = ({ match, stories }) => {
         <img src={stories.find(s => s.id == match.params.storyId).image} alt={'Story Scene'} class="center" />
       </div>
       <h3>{stories.find(s => s.id == match.params.storyId).opening_line}</h3>
+      <p>Created By: {stories.find(s => s.id == match.params.storyId).author}</p>
       <CommentsContainer story_id={stories.find(s => s.id == match.params.storyId).id} />
     </div>
   );
