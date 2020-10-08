@@ -8,12 +8,12 @@ class StoryInput extends Component {
         opening_line: '',
         image: '',
         genre: '',
-        author: this.props.user
+        author: this.props.user.username
     }
 
     handleOnChange = (e) => {
         let name = e.target.name
-        this.setState({ [name]: e.target.value })
+        this.setState({ [name]: e.target.value})
 
     }
 
@@ -44,8 +44,6 @@ class StoryInput extends Component {
                         </select>
                     </div>
 
-                    {/* <input type="text" value={this.state.author} onChange={this.handleOnChange} name="author"/>
-                <br /> */}
                     <button className="btn btn-secondary my-2" onClick={(event) => this.handleOnSubmit(event)}> Submit </button>
                 </form>
             </div>

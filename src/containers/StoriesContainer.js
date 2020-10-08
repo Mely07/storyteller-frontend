@@ -34,7 +34,7 @@ class StoriesContainer extends Component {
 
                 <Switch>
                     <Route exact path={`${this.props.match.url}/:storyId`} render={routerProps => <Story {...routerProps} stories={this.props.stories} />} />
-                    <Route path="/stories" render={routerProps => <Stories stories={this.props.stories} />} />
+                    <Route path="/stories" render={routerProps => <Stories stories={this.props.stories} user={this.props.user} />} />
                     <Redirect from="*" to="/index.html" />
                 </Switch>
             </div>
