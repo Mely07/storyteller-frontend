@@ -19,7 +19,7 @@ class StoriesContainer extends Component {
         // console.log(this.props.location.state.users.username) 
         return (
             <div>
-                Welcome, <p>{this.props.user.username}</p>
+                Welcome, <p>{this.props.user}</p>
 
                 Filter By Genre:
                 <div className="mb-3">
@@ -45,7 +45,7 @@ class StoriesContainer extends Component {
 const mapStateToProps = state => {
     return {
         stories: state.stories,
-        user: state.users
+        user: localStorage.getItem('user'),
     }
 }
 

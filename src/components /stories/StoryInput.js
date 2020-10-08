@@ -8,12 +8,12 @@ class StoryInput extends Component {
         opening_line: '',
         image: '',
         genre: '',
-        author: this.props.user.username
+        author: localStorage.getItem('user')
     }
 
     handleOnChange = (e) => {
         let name = e.target.name
-        this.setState({ [name]: e.target.value})
+        this.setState({ [name]: e.target.value })
 
     }
 

@@ -16,6 +16,7 @@ class LogIn extends Component {
 
     OnClick = (e) => {
         e.preventDefault();
+        localStorage.setItem('user', this.state.username);
         this.props.createCurrentUser(this.state)
     }
     render() {
