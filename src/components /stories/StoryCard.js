@@ -1,33 +1,17 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const StoryCard = ({ story }) => {
     return (
-        <Card style={cardStyle}>
-            <Card.Img src={story.image} style={imageStyle} />
-            <Card.ImgOverlay>
-                <Card.Text>{story.opening_line}</Card.Text>
-            </Card.ImgOverlay>
 
-        </Card>
+        <div className="card rounded">
+            <Link key={story.id} to={`/stories/${story.id}`}><img className="card-img-top border border-secondary rounded" style={{height: "280px"}} src={story.image} alt="Card image cap"></img></Link>
 
-    );
-};
+            <div className="card-body">
+                <p className="font-italic" style={{maxHeight: '4.5rem', overflowY: 'scroll', minHeight: '4.5rem'}}>{story.opening_line}</p>
+                <footer className="blockquote-footer">Posted by: <cite title="Source Title">{story.author}</cite></footer>
+            </div>
+        </div>
+    )
+}
 export default StoryCard;
-
-
-const cardStyle = {
-    marginBottom: 25,
-    marginTop: 25,
-    marginLeft: 25,
-
-    height: 250,
-    width: 250,
-    display: 'inline-block',
-    textAlign: 'center'
-}
-
-const imageStyle = {
-    height: '100%',
-    display: 'block',
-}

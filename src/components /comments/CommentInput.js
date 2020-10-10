@@ -6,7 +6,7 @@ class CommentInput extends Component {
 
     state = {
         story_id: this.props.story_id,
-        //author: '',
+        author: localStorage.getItem('user'),
         text: '',
     }
 
@@ -18,19 +18,22 @@ class CommentInput extends Component {
     handleOnSubmit = (e) => {
         e.preventDefault();
         this.props.addComment(this.state)
+        this.setState({
+            text: ''
+        })
     }
 
     render() {
+
         return (
-                <form>
-                    <input className="card mb-4 shadow-sm" type="text" placeholder="Enter your lines here..." value={this.state.text} onChange={this.handleOnChange} name="text" />
-                    <br />
-                    <button className="btn btn-secondary my-2" onClick={(e) => this.handleOnSubmit(e)}> Submit </button>
-                </form>
+            <form>
+                <textarea class="form-control shadow-sm" rows="3" placeholder="Enter your lines here..." value={this.state.text} onChange={this.handleOnChange} name="text"></textarea>
+                <br />
+                <button className="btn btn-secondary my-2" onClick={(e) => this.handleOnSubmit(e)}> Submit </button>
+            </form>
 
         );
     }
 }
 
 export default connect(null, { addComment })(CommentInput);
-
