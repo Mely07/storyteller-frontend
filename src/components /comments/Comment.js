@@ -32,10 +32,8 @@ class Comment extends Component {
             <div className="card mb-4 shadow-sm">
                 <div className="card-body">
                     <div className="card-text">{this.props.comment.text}
-                        <br /> 
-                        Posted by: {this.props.comment.author}
-                        <br />
-                        Author: {this.props.comment.id}
+                        <br></br><br /> 
+                        <strong> Posted by:</strong> {this.props.comment.author}
                         <br />
                         <span className="float-right">
                             <i className="far fa-thumbs-up mr-1 text-success" onClick={(e) => this.handleLike(e)}>{this.props.comment.likes}</i>

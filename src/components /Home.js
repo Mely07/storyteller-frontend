@@ -21,9 +21,9 @@ class Home extends Component {
      return (
         <div>
             <div className="container text-center text-white mt-2">
-                <h1>Storyteller</h1>
-                <p className="lead">An app created for the author in you.</p>
-                <button className="btn btn-small btn-light my-2" onClick={() => this.setState({renderForm: true})}> Next </button>
+                <h1 className="display-3 ">Storyteller</h1>
+                <h5>An app created for the author in you.<button className="btn btn-small btn-link mt-0 text-warning" onClick={() => this.setState({renderForm: true})}> LogIn </button>to start writing</h5>
+                {/* <li><h4 onClick={() => this.setState({renderForm: true})}>LogIn </h4></li> */}
                 {this.state.renderForm && <LogIn/>}
             </div>
         </div>

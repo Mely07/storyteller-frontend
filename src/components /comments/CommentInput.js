@@ -8,6 +8,7 @@ class CommentInput extends Component {
         story_id: this.props.story_id,
         author: localStorage.getItem('user'),
         text: '',
+        textError: ''
     }
 
     handleOnChange = (e) => {
@@ -17,10 +18,15 @@ class CommentInput extends Component {
 
     handleOnSubmit = (e) => {
         e.preventDefault();
-        this.props.addComment(this.state)
-        this.setState({
-            text: ''
-        })
+        if (this.state.text === '') {
+            this.setState({ textError: 'Some text is required.' });
+        }
+        else {
+            this.props.addComment(this.state)
+            this.setState({
+                text: ''
+            })
+        }
     }
 
     render() {
@@ -28,6 +34,7 @@ class CommentInput extends Component {
         return (
             <form>
                 <textarea class="form-control shadow-sm" rows="3" placeholder="Enter your lines here..." value={this.state.text} onChange={this.handleOnChange} name="text"></textarea>
+                <small className="form-text text-danger">{this.state.textError}</small>
                 <br />
                 <button className="btn btn-secondary my-2" onClick={(e) => this.handleOnSubmit(e)}> Submit </button>
             </form>
