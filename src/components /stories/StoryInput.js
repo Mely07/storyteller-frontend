@@ -22,7 +22,8 @@ class StoryInput extends Component {
         this.setState({ [name]: e.target.value })
     }
 
-    handleOnSubmit = (e) => {
+    handleOnSubmit = (e) => { 
+        // We can validate the data the user enters before we set it on the state, allowing us to block any invalid values and set another state property (for example, isInvalidNumber). 
         e.preventDefault();
 
         if (this.state.opening_line === '') {

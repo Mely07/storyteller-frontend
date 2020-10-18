@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 import LogIn from './LogIn';
 
 class Home extends Component {

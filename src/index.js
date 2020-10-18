@@ -11,7 +11,8 @@ import App from './App';
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={store}> 
+  {/* Provider ensures that our entire React application can access data from the store.  */}
     <Router>
       <App />
     </Router>

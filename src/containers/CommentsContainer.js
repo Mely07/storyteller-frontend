@@ -13,7 +13,7 @@ class CommentsContainer extends Component {
     render() {
         return (
             <div>
-                <Comments comments={this.props.comments.filter(comment => comment.story_id == this.props.story_id)} />
+                <Comments comments={this.props.comments.filter(comment => comment.story_id === this.props.story_id)} />
                 <CommentInput story_id={this.props.story_id} />
             </div>
         );

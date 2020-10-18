@@ -7,8 +7,8 @@ import { filterByGenre } from '../../actions/storiesActions';
 
 const Stories = ({ stories, filterByGenre }) => {
     const renderStories = stories.map(story =>
-        <div className="col-md-3 mt-3 mb-3"> 
-            <StoryCard story={stories.find(s => s.id == story.id)} />
+        <div className="col-md-3 mt-3 mb-3" key={story.id}> 
+            <StoryCard story={stories.find(s => s.id === story.id)} />
         </div>
     );
 

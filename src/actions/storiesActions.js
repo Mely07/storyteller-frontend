@@ -1,9 +1,10 @@
 export const fetchStories = () => {
     return (dispatch) => {
+        dispatch({ type: 'LOADING_STORIES' });
         fetch('http://localhost:3000/stories')
-        .then(resp => resp.json())
-        .then(stories => dispatch({ type: 'FETCH_STORIES', payload: stories}))
-    }
+            .then(response => response.json())
+            .then(stories => dispatch({ type: 'FETCH_STORIES', payload: stories }));
+    };
 }
 
 export const addStory = (story) => {
@@ -11,17 +12,17 @@ export const addStory = (story) => {
         fetch('http://localhost:3000/stories', {
             method: 'POST',
             body: JSON.stringify(story),
-            headers: { 'Content-Type': 'application/json'}
+            headers: { 'Content-Type': 'application/json' }
         })
-        .then(resp => resp.json())
-        .then(story=> dispatch({ type: 'ADD_STORY', payload: story}))
+            .then(resp => resp.json())
+            .then(story => dispatch({ type: 'ADD_STORY', payload: story }))
     }
 }
 
 export const filterByGenre = (genre) => {
     return (dispatch) => {
         fetch('http://localhost:3000/stories')
-        .then(resp => resp.json())
-        .then(stories => dispatch({ type: 'FILTER_STORIES', payload: stories.filter(story => story.genre == genre)}))
+            .then(resp => resp.json())
+            .then(stories => dispatch({ type: 'FILTER_STORIES', payload: stories.filter(story => story.genre === genre) }))
     }
 }
