@@ -15,8 +15,7 @@ export const storiesReducer = (state = { stories: [], loading: false }, action) 
 
         case 'ADD_STORY':
             return {
-                ...state,
-                stories: action.payload,
+                stories: [...state.stories, action.payload],
                 loading: false
             }
 

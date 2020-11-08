@@ -3,12 +3,14 @@ import StoryCard from './StoryCard'
 import StoryInput from './StoryInput';
 import { connect } from 'react-redux';
 import { filterByGenre } from '../../actions/storiesActions';
+import Button from '../Button';
 
 
 const Stories = ({ stories, filterByGenre }) => {
-    const renderStories = stories.map(story =>
-        <div className="col-md-3 mt-3 mb-3" key={story.id}> 
+    const renderStories = stories.map((story) =>
+        <div className="col-md-3 mt-3 mb-3" key={story.id}>
             <StoryCard story={stories.find(s => s.id === story.id)} />
+            {/* <Button /> */}
         </div>
     );
 
@@ -22,7 +24,7 @@ const Stories = ({ stories, filterByGenre }) => {
             <StoryInput />
             <div className="text-secondary font-weight-bold text-warning">Filter Stories by Genre:</div>
             <div className="row">
-                <div className="col-md-3" style={{padding: '0'}}>
+                <div className="col-md-3" style={{ padding: '0' }}>
                     <form className="mt-2">
                         <div className="mb-3">
                             <select className="custom-select d-block w-100" onChange={handleOnChange}>
@@ -40,10 +42,9 @@ const Stories = ({ stories, filterByGenre }) => {
             <div className="row">
                 {renderStories}
             </div>
+
         </div>
     );
 };
 
 export default connect(null, { filterByGenre })(Stories);
-
-
