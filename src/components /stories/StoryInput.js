@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { addStory } from '../../actions/storiesActions'
+import TopStory from './TopStory';
 
 class StoryInput extends Component {
 
@@ -22,7 +23,7 @@ class StoryInput extends Component {
         this.setState({ [name]: e.target.value })
     }
 
-    handleOnSubmit = (e) => { 
+    handleOnSubmit = (e) => {
         // We can validate the data the user enters before we set it on the state, allowing us to block any invalid values and set another state property (for example, isInvalidNumber). 
         e.preventDefault();
 
@@ -32,9 +33,7 @@ class StoryInput extends Component {
         else if (this.state.image === '') {
             this.setState({ imageError: 'Image is required.' });
         }
-        // else if (!this.validateImage(this.state.image)) {
-        //     this.setState({imageError: 'Please enter a URL.'});
-        // }
+
 
         else if (this.state.genre === '') {
             this.setState({ genreError: 'Genre is required.' });
@@ -50,43 +49,51 @@ class StoryInput extends Component {
         }
     }
 
-    
     render() {
         return (
-            <div className="col-md-6 order-md-1 mx-auto">
-                <p className="text-secondary font-weight-bold text-warning">Add a new story:</p>
-                <form className="mt-2">
-                    <div className="mb-3">
-                        <input placeholder="Opening line here..." className="form-control" type="text" value={this.state.opening_line} onChange={this.handleOnChange} name="opening_line" />
-                        <small className="form-text text-danger">{this.state.openingLineError}</small>
-                    </div>
+            <div className="row">
+                <div className="col-md-6">
+                    <div>
+                        <p className="text-secondary font-weight-bold text-warning">Add a new story:</p>
+                        <form className="mt-2">
+                            <div className="mb-3">
+                                <input placeholder="Opening line here..." className="form-control" type="text" value={this.state.opening_line} onChange={this.handleOnChange} name="opening_line" />
+                                <small className="form-text text-danger">{this.state.openingLineError}</small>
+                            </div>
 
-                    <div className="mb-3">
-                        <input placeholder="Image URL" className="form-control" type="url" value={this.state.image} onChange={this.handleOnChange} name="image" required />
-                        <small className="form-text text-danger">{this.state.imageError}</small>
-                    </div>
+                            <div className="mb-3">
+                                <input placeholder="Image URL" className="form-control" type="url" value={this.state.image} onChange={this.handleOnChange} name="image" required />
+                                <small className="form-text text-danger">{this.state.imageError}</small>
+                            </div>
 
-                    <div className="mb-3">
-                        <select className="custom-select d-block w-100" onChange={this.handleOnChange} name="genre">
-                            <option selected="true" disabled="disabled">Choose a Genre</option>
-                            <option>Comedy</option>
-                            <option>Horror</option>
-                            <option>Action</option>
-                            <option>Fantasy</option>
-                        </select>
-                        <small className="form-text text-danger">{this.state.genreError}</small>
-                    </div>
+                            <div className="mb-3">
+                                <select className="custom-select d-block w-100" onChange={this.handleOnChange} name="genre">
+                                    <option selected="true" disabled="disabled">Choose a Genre</option>
+                                    <option>Comedy</option>
+                                    <option>Horror</option>
+                                    <option>Action</option>
+                                    <option>Fantasy</option>
+                                </select>
+                                <small className="form-text text-danger">{this.state.genreError}</small>
+                            </div>
 
-                    <button className="btn btn-secondary float-right" onClick={(event) => this.handleOnSubmit(event)}> Submit </button>
-                </form>
+                            <button className="btn btn-secondary float-right" onClick={(event) => this.handleOnSubmit(event)}> Submit </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <TopStory story={this.props.topStory} />
+                </div>
             </div>
+
         );
     }
 }
 
 const mapStateToProps = state => {
     return {
-        user: state.users,
+        user: state.users
     }
 }
 

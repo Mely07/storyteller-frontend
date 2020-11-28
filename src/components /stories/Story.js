@@ -2,7 +2,7 @@ import React from 'react';
 import CommentsContainer from '../../containers/CommentsContainer';
 
 const Story = ({ match, stories }) => {
-  console.log(match)
+  // console.log(match)
 
   if (stories.length === 0) return null
   return (

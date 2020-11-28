@@ -25,6 +25,13 @@ export const storiesReducer = (state = { stories: [], loading: false }, action) 
                 loading: false
             }
 
+        case 'TOP_STORY':
+            return {
+                ...state,
+                story: action.payload,
+                loading: false
+            }
+
         default:
             return state;
     }
