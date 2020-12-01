@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import LogIn from './LogIn';
+import SignUp from './SignUp';
 
 class Home extends Component {
  state = { 
-     renderForm: false 
+    renderLogInForm: false, 
+    renderSignUpForm: false
  }
 
  componentDidMount() {
@@ -16,14 +18,24 @@ class Home extends Component {
     x.style = '';
  }
 
+ login() {
+    this.setState({renderLogInForm: true, renderSignUpForm: false});
+ }
+
+ signup() {
+    this.setState({renderLogInForm: false, renderSignUpForm: true});
+ }
+
  render() {
      return (
         <div>
             <div className="container text-center text-white mt-2">
                 <h1 className="display-3 ">Storyteller</h1>
-                <h5>An app created for the author in you.<button className="btn btn-small btn-link mt-0 text-warning" onClick={() => this.setState({renderForm: true})}> LogIn </button>to start writing</h5>
+                <button className="btn btn-small btn-link mt-0 text-warning" onClick={() => this.login()}> LogIn </button>
                 {/* <li><h4 onClick={() => this.setState({renderForm: true})}>LogIn </h4></li> */}
-                {this.state.renderForm && <LogIn/>}
+                {this.state.renderLogInForm && <LogIn/>}
+                <button className="btn btn-small btn-link mt-0 text-warning" onClick={() => this.signup()}> Sign Up</button>
+                {this.state.renderSignUpForm && <SignUp/>}
             </div>
         </div>
      );
