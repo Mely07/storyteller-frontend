@@ -23,7 +23,7 @@ class StoriesContainer extends Component {
                     <h5>Please LogIn to access stories! </h5><h3><Nav.Link href='/'> Back</Nav.Link></h3></div>}
                 { this.props.user && (
                     <div>
-                        <h4 className="mt-2">Welcome, <strong><span>{this.props.user}</span></strong>!</h4>
+                        <h4 className="mt-2">Welcome, <strong><span>{this.props.user.username}</span></strong>!</h4>
                         <Switch>
                             <Route exact path={`${this.props.match.url}/:story_id`} render={routerProps => <Story {...routerProps} stories={this.props.stories.stories} />} />
                             <Route path="/stories" render={routerProps => <Stories stories={this.props.stories.stories} user={this.props.user} topStory={this.props.topStory} />} />
@@ -35,13 +35,13 @@ class StoriesContainer extends Component {
             </div>
         );
     }
-}
+} 
 
 const mapStateToProps = state => {
     return {
         topStory: state.stories.story,
         stories: state.stories,
-        user: localStorage.getItem('user'),
+        user: state.auth.currentUser
     }
 
 }

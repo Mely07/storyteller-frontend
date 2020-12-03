@@ -82,7 +82,7 @@ class StoryInput extends Component {
                     </div>
                 </div>
                 
-                <div class="col-md-3">
+                <div className="col-md-3">
                     <TopStory story={this.props.topStory} />
                 </div>
             </div>

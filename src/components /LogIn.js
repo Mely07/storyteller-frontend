@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createCurrentUser } from '../actions/usersActions';
 import { Redirect } from 'react-router-dom'
+import { login } from '../actions/authActions'
 
 class LogIn extends Component {
     state = {
         username: '',
         email: '',
-        emailError: false, 
+        emailError: false,
         usernameError: '',
     }
 
@@ -21,23 +21,29 @@ class LogIn extends Component {
         return re.test(String(email).toLowerCase());
     }
 
+    // OnClick = (e) => {
+    //     e.preventDefault();
+
+    //     if (this.state.username === '') {
+    //         this.setState({usernameError: 'Username is required.'});
+    //     }
+    //     else if (this.state.email === ''){
+    //         this.setState({emailError: 'Email is required.'});
+    //     } 
+    //     else if (!this.validateEmail(this.state.email)) {
+    //         this.setState({emailError: 'Email is invalid.'});
+    //     }
+    //     else {
+    //         this.setState({emailError: '', usernameError: ''});
+    //         // localStorage.setItem('user', this.state.username);
+    //         this.props.createCurrentUser(this.state) 
+    //     }
+    // }
+
     OnClick = (e) => {
         e.preventDefault();
-
-        if (this.state.username === '') {
-            this.setState({usernameError: 'Username is required.'});
-        }
-        else if (this.state.email === ''){
-            this.setState({emailError: 'Email is required.'});
-        } 
-        else if (!this.validateEmail(this.state.email)) {
-            this.setState({emailError: 'Email is invalid.'});
-        }
-        else {
-            this.setState({emailError: '', usernameError: ''});
-            localStorage.setItem('user', this.state.username);
-            this.props.createCurrentUser(this.state) 
-        }
+        console.log(this.props.history)
+        this.props.login(this.state, this.props.history);
     }
 
     render() {
@@ -58,15 +64,17 @@ class LogIn extends Component {
                         <button className="btn btn-secondary my-2" onClick={(event) => this.OnClick(event)}> Submit </button>
                     </form>
 
-                    {(this.props.user.username && <Redirect to="/stories" />)}
+                    {(this.props.user.username && <Redirect to="/stories" />)} */}
                 </div>
             </div>
         );
     }
-};
-
-const mapStateToProps = state => {
-    return { user: state.users }
 }
 
-export default connect(mapStateToProps, { createCurrentUser })(LogIn);
+const mapStateToProps = state => {
+    return {
+        user: state.auth.currentUser
+    }
+}
+
+export default connect(mapStateToProps, { login })(LogIn);

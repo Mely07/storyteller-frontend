@@ -33,9 +33,9 @@ class Home extends Component {
                 <h1 className="display-3 ">Storyteller</h1>
                 <button className="btn btn-small btn-link mt-0 text-warning" onClick={() => this.login()}> LogIn </button>
                 {/* <li><h4 onClick={() => this.setState({renderForm: true})}>LogIn </h4></li> */}
-                {this.state.renderLogInForm && <LogIn/>}
+                {this.state.renderLogInForm && <LogIn history={this.props.history} />}
                 <button className="btn btn-small btn-link mt-0 text-warning" onClick={() => this.signup()}> Sign Up</button>
-                {this.state.renderSignUpForm && <SignUp/>}
+                {this.state.renderSignUpForm && <SignUp history={this.props.history} />}
             </div>
         </div>
      );

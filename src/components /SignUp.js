@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-//import { signup } from '../actions/authActions'
-
-
+import { signup } from '../actions/authActions'
 
 class SignUp extends Component {
     state = {
@@ -19,7 +17,7 @@ class SignUp extends Component {
 
     OnClick = (e) => {
         e.preventDefault();
-        console.log("HI")
+        this.props.signup(this.state, this.props.history);
     }
 
     render() {
@@ -51,4 +49,4 @@ class SignUp extends Component {
     }
 }
 
-export default connect(null, { })(SignUp);
+export default connect(null, { signup })(SignUp);
