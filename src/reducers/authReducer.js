@@ -8,13 +8,13 @@ export const authReducer = (state = { loggedIn: false, currentUser: {} }, action
           currentUser: action.payload.currentUser
         };
 
-      // case 'LOGOUT':
-      //   console.log('inAuthRed')
-      //   return {
-      //     ...state,
-      //     loggedIn: false,
-      //     currentUser: {},
-      //   };
+      case 'LOGOUT':
+        console.log('inAuthReducer')
+        return {
+          ...state,
+          loggedIn: false,
+          currentUser: {},
+        };
 
       default:
         return state;

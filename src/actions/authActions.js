@@ -53,23 +53,24 @@ export const signup = (user, history) => {
             type: 'AUTH_SUCCESSFUL',
             payload: { loggedIn: data.logged_in, currentUser: data.user },
           });
-          
+          callback();
         });
     };
   };
   
-  // export const logout = (history) => {
-  //   return (dispatch) => {
-  //     fetch(`http://localhost:3000/logout`, {
-  //       method: 'DELETE',
-  //       credentials: 'include',
-  //     })
-  //       .then((res) => res.json())
-  //       .then(() => {
-  //         console.log('in authActions')
-  //         dispatch({ type: 'LOGOUT' });
-  //         history.push('/login');
-  //       });
-  //   };
-  // };
+  export const logout = (history) => {
+    return (dispatch) => {
+      console.log('inauthAction')
+      fetch(`http://localhost:3000/logout`, {
+        method: 'DELETE',
+        credentials: 'include',
+      })
+        .then((res) => res.json())
+        .then(() => {
+          console.log('in authActions')
+          dispatch({ type: 'LOGOUT' });
+          history.push('/login');
+        });
+    };
+  };
   
