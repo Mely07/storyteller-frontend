@@ -9,6 +9,8 @@ const NavBar = () => {
       <Nav className="col-sm-3">
         <Nav.Link href='/'>Home</Nav.Link>
         <Nav.Link href="/stories">Stories</Nav.Link>
+        <Nav.Link href="/signup">Signup</Nav.Link>
+        <Nav.Link href="/login">Login</Nav.Link>
       </Nav>
     </Navbar>
   );

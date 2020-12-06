@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom'
+// import { Redirect } from 'react-router-dom'
 import { login } from '../actions/authActions'
 
 class LogIn extends Component {
     state = {
         username: '',
-        email: '',
-        emailError: false,
+        // email: '',
+        password: '',
+        // emailError: false,
         usernameError: '',
     }
 
@@ -16,10 +17,10 @@ class LogIn extends Component {
         this.setState({ [name]: e.target.value })
     }
 
-    validateEmail(email) {
-        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
-    }
+    // validateEmail(email) {
+    //     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    //     return re.test(String(email).toLowerCase());
+    // }
 
     // OnClick = (e) => {
     //     e.preventDefault();
@@ -42,8 +43,9 @@ class LogIn extends Component {
 
     OnClick = (e) => {
         e.preventDefault();
-        console.log(this.props.history)
+
         this.props.login(this.state, this.props.history);
+        console.log('here')
     }
 
     render() {
@@ -56,15 +58,19 @@ class LogIn extends Component {
                             <small className="form-text bg-white text-danger">{this.state.usernameError}</small>
                         </div>
 
-                        <div className="mb-3">
+                        {/* <div className="mb-3">
                             <input placeholder="Email" className="form-control" type="email" value={this.state.email} onChange={this.OnChange} name="email" />
                             <small className="form-text bg-white text-danger">{this.state.emailError}</small>
+                        </div> */}
+
+                        <div className="mb-3">
+                            <input placeholder="Password" className="form-control" type="text" value={this.state.password} onChange={this.OnChange} name="password" />
                         </div>
 
                         <button className="btn btn-secondary my-2" onClick={(event) => this.OnClick(event)}> Submit </button>
                     </form>
 
-                    {(this.props.user.username && <Redirect to="/stories" />)} */}
+                    {/* {(this.props.user.username && <Redirect to="/stories" />)}  */}
                 </div>
             </div>
         );
