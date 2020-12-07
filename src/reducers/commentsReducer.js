@@ -14,10 +14,6 @@ export const commentsReducer = (state = [], action) => {
                 return comment;
             });
 
-            // const index = state.findIndex(comment => comment.id == action.payload.id);
-            // state[index] = action.payload;
-            // return [...state];
-
         case 'INCREASE_DISLIKES':
             return state.map(comment => {
                 if (comment.id === action.payload.id) {
