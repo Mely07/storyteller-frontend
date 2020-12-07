@@ -5,17 +5,28 @@ import { connect } from 'react-redux'
 import { Redirect, Switch, Route } from 'react-router-dom'
 import Story from '../components /stories/Story';
 import Stories from '../components /stories/Stories';
-import TopStory from '../components /stories/TopStory';
 import { Nav } from 'react-bootstrap';
+import { checkLoggedIn } from '../actions/authActions';
 
 class StoriesContainer extends Component {
+    state = {
+        loading: true,
+    };
+
+    toggleLoading = () => {
+        this.setState({ loading: !this.state.loading });
+    };
 
     componentDidMount() {
-        this.props.fetchStories()
-        this.props.fetchTopStory()
+        console.log('in StoriesContainer')
+        this.props.fetchStories();
+        this.props.fetchTopStory();
+        this.props.checkLoggedIn(this.toggleLoading)
     }
 
     render() {
+        if (this.state.loading) return <h1>Loading...</h1>;
+
         return (
             <div className="container-fluid mb-5">
                 { !this.props.user && <div className="container text-center mt-5"><h1 className="display-3">Uh Oh!</h1><br />
@@ -30,12 +41,11 @@ class StoriesContainer extends Component {
                             <Redirect from="*" to="/index.html" />
                         </Switch>
                     </div>
-                    
                 )}
             </div>
         );
     }
-} 
+}
 
 const mapStateToProps = state => {
     return {
@@ -43,10 +53,9 @@ const mapStateToProps = state => {
         stories: state.stories,
         user: state.auth.currentUser
     }
-
 }
 
-export default connect(mapStateToProps, { fetchStories, fetchTopStory })(StoriesContainer);
+export default connect(mapStateToProps, { fetchStories, fetchTopStory, checkLoggedIn })(StoriesContainer);
 // connect(), allows us to specify which data we are listening to (through mapStateToProps)
 
 

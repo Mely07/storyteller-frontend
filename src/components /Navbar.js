@@ -5,26 +5,24 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 class NavBar extends Component {
-  
+
   render() {
     return (
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand> ST </Navbar.Brand>
+        <Navbar.Brand href="/"> ST </Navbar.Brand>
 
         <Nav className="col-sm-3">
-          <Nav.Link to="/">Home</Nav.Link>
-          
           {this.props.loggedIn ? (
             <>
               <Nav.Link href="/stories">Stories</Nav.Link>
               <Nav.Link href="#" onClick={() => this.props.logout(this.props.history)}>Log Out</Nav.Link>
             </>
           ) : (
-            <>
-              <Nav.Link href="/signup">Signup</Nav.Link>
-              <Nav.Link href="/login">Login</Nav.Link>
-            </>
-          )} 
+              <>
+                <Nav.Link href="/signup">Signup</Nav.Link>
+                <Nav.Link href="/login">Login</Nav.Link>
+              </>
+            )}
         </Nav>
       </Navbar>
     );
