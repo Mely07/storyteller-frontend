@@ -6,27 +6,16 @@ import { Redirect, Switch, Route } from 'react-router-dom'
 import Story from '../components /stories/Story';
 import Stories from '../components /stories/Stories';
 import { Nav } from 'react-bootstrap';
-import { checkLoggedIn } from '../actions/authActions';
+
 
 class StoriesContainer extends Component {
-    state = {
-        loading: true,
-    };
-
-    toggleLoading = () => {
-        this.setState({ loading: !this.state.loading });
-    };
-
     componentDidMount() {
         console.log('in StoriesContainer')
         this.props.fetchStories();
         this.props.fetchTopStory();
-        this.props.checkLoggedIn(this.toggleLoading)
     }
 
     render() {
-        if (this.state.loading) return <h1>Loading...</h1>;
-
         return (
             <div className="container-fluid mb-5">
                 { !this.props.user && <div className="container text-center mt-5"><h1 className="display-3">Uh Oh!</h1><br />
@@ -55,7 +44,7 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchStories, fetchTopStory, checkLoggedIn })(StoriesContainer);
+export default connect(mapStateToProps, { fetchStories, fetchTopStory})(StoriesContainer);
 // connect(), allows us to specify which data we are listening to (through mapStateToProps)
 
 

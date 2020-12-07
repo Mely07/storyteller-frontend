@@ -7,18 +7,30 @@ import LogIn from './LogIn';
 import SignUp from './SignUp'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-
+import { checkLoggedIn } from '../actions/authActions';
 
 class Router extends Component {
+    state = {
+        loading: true,
+    };
+
+    toggleLoading = () => {
+        this.setState({ loading: !this.state.loading });
+    };
+
+    componentDidMount() {
+        this.props.checkLoggedIn(this.toggleLoading)
+    }
 
     render() {
+        if (this.state.loading) return <h1>Loading...</h1>;
+
         return (
             <div>
                 <NavBar />
 
                 <Switch>
                     <Route exact path='/' component={Home} />
-                    <Route path='/stories' render={routerProps => <StoriesContainer {...routerProps} />} />
                     <Route
                         path="/stories"
                         render={(props) => {
@@ -45,4 +57,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, {})(Router);
+export default connect(mapStateToProps, {checkLoggedIn })(Router);

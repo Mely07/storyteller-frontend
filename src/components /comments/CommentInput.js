@@ -6,7 +6,7 @@ class CommentInput extends Component {
 
     state = {
         story_id: this.props.story_id,
-        author: localStorage.getItem('user'),
+        author: this.props.user.username,
         text: '',
         textError: ''
     }
@@ -43,4 +43,10 @@ class CommentInput extends Component {
     }
 }
 
-export default connect(null, { addComment })(CommentInput);
+const mapStateToProps = state => {
+    return {
+        user: state.auth.currentUser
+    }
+}
+
+export default connect(mapStateToProps, { addComment })(CommentInput);

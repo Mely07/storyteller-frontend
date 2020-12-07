@@ -9,7 +9,7 @@ class StoryInput extends Component {
         opening_line: '',
         image: '',
         genre: '',
-        author: localStorage.getItem('user'),
+        author: this.props.user.username, 
         openingLineError: '',
         imageError: '',
         genreError: ''
@@ -93,7 +93,7 @@ class StoryInput extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.users
+        user: state.auth.currentUser
     }
 }
 
