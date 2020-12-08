@@ -41,11 +41,20 @@ export const login = (user, history) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        dispatch({
-          type: 'AUTH_SUCCESSFUL',
-          payload: { loggedIn: data.logged_in, currentUser: data.user },
-        });
-        history.push(`/stories`);
+        if (data.user) {
+          dispatch({
+            type: 'AUTH_SUCCESSFUL',
+            payload: { loggedIn: data.logged_in, currentUser: data.user },
+
+          });
+          history.push(`/stories`);
+        }
+        else {
+          dispatch({
+            type: 'AUTH_UNSUCCESSFUL',
+            payload: { errors: data },
+          });
+        }
       })
   };
 };

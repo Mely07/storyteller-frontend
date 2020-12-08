@@ -41,6 +41,7 @@ class LogIn extends Component {
                         <div className="mb-3">
                             <input placeholder="Password" className="form-control" type="text" value={this.state.password} onChange={this.OnChange} name="password" />
                             <small className="form-text bg-white text-danger">{this.state.passwordError}</small>
+                            <small className="form-text bg-white text-danger">{this.props.errors && (<p>{this.props.errors.message}.</p>)}</small>
                         </div>
 
                         <button className="btn btn-secondary my-2" onClick={(event) => this.OnClick(event)}> Submit </button>
@@ -52,8 +53,9 @@ class LogIn extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log('state in login:', state)
     return {
-        user: state.auth.currentUser
+        errors: state.auth.errors
     }
 }
 
