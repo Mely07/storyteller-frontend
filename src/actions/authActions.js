@@ -11,18 +11,25 @@ export const signup = (user, history) => {
       .then((res) => res.json())
       .then((data) => {
         console.log('signup', data);
-        dispatch({
-          type: 'AUTH_SUCCESSFUL',
-          payload: { loggedIn: data.logged_in, currentUser: data.user },
+        if (data.user) {
+          dispatch({
+            type: 'AUTH_SUCCESSFUL',
+            payload: { loggedIn: data.logged_in, currentUser: data.user },
 
-        });
-        history.push(`/stories`);
-      });
+          });
+          history.push(`/stories`);
+        }
+        else {
+          dispatch({
+            type: 'AUTH_UNSUCCESSFUL',
+            payload: { errors: data },
+          });
+        }
+      })
   };
 };
 
 export const login = (user, history) => {
-  console.log('loginhistory', history)
   return (dispatch) => {
     fetch(`http://localhost:3000/sessions`, {
       method: 'POST',
@@ -39,7 +46,7 @@ export const login = (user, history) => {
           payload: { loggedIn: data.logged_in, currentUser: data.user },
         });
         history.push(`/stories`);
-      });
+      })
   };
 };
 

@@ -8,6 +8,13 @@ export const authReducer = (state = { loggedIn: false, currentUser: {} }, action
           currentUser: action.payload.currentUser
         };
 
+      case 'AUTH_UNSUCCESSFUL':
+        console.log('goal',action)
+        return {
+          ...state,
+          errors: action.payload.errors
+        };
+
       case 'LOGOUT':
         console.log('inAuthReducer')
         return {
