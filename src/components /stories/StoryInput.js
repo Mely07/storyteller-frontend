@@ -57,7 +57,7 @@ class StoryInput extends Component {
                         <p className="text-secondary font-weight-bold text-warning">Add a new story:</p>
                         <form className="mt-2">
                             <div className="mb-3">
-                                <input placeholder="Opening line here..." className="form-control" type="text" value={this.state.opening_line} onChange={this.handleOnChange} name="opening_line" />
+                                <input placeholder="Opening line here..." className="form-control"  value={this.state.opening_line} onChange={this.handleOnChange} name="opening_line" />
                                 <small className="form-text text-danger">{this.state.openingLineError}</small>
                             </div>
 

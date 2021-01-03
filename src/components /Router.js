@@ -27,8 +27,6 @@ class Router extends Component {
 
         return (
             <div>
-                <NavBar />
-
                 <Switch>
                     <Route exact path='/' component={Home} />
                     <Route
@@ -37,7 +35,7 @@ class Router extends Component {
                             if (this.props.loggedIn) {
                                 return <StoriesContainer {...props} />;
                             } else {
-                                return <Redirect to="/"/>;
+                                return <Redirect to="/" />;
                             }
                         }}
                     />
@@ -57,4 +55,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, {checkLoggedIn })(Router);
+export default connect(mapStateToProps, { checkLoggedIn })(Router);
