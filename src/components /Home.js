@@ -16,9 +16,6 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <div className="container text-center text-white mt-2">
-                    <h1 className="display-3 ">Storyteller</h1>
-                </div>
             </div>
         );
     }

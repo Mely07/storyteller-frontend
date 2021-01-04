@@ -23,8 +23,6 @@ class StoriesContainer extends Component {
         return (
 
             <div className="container-fluid mb-5">
-                <NavBar />
-
                 { !this.props.user && <div className="container text-center mt-5"><h1 className="display-3">Uh Oh!</h1><br />
                     <img className="mx-auto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSwzEeEPDRTGkqFkK82j8_f6aFLvJnpZpy3rw&usqp=CAU" alt="Open book in dim lighting"></img>
                     <h5>Please LogIn to access stories! </h5><h3><Nav.Link href='/'> Back</Nav.Link></h3></div>}

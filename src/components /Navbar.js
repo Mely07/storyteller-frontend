@@ -9,7 +9,7 @@ class NavBar extends Component {
   render() {
     return (
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="/"> ST </Navbar.Brand>
+        <Navbar.Brand href="/"> Storyteller </Navbar.Brand>
 
         <Nav className="col-sm-3">
           {this.props.loggedIn ? (

@@ -27,6 +27,8 @@ class Router extends Component {
 
         return (
             <div>
+                <NavBar />
+
                 <Switch>
                     <Route exact path='/' component={Home} />
                     <Route
@@ -41,8 +43,6 @@ class Router extends Component {
                     />
                     <Route path='/login' component={LogIn} />
                     <Route path='/signup' component={SignUp} />
-
-                    {/* <Redirect from="*" to="/" exact/> */}
                 </Switch>
             </div>
         );
