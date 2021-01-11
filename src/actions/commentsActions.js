@@ -1,6 +1,8 @@
+import ENDPOINT from '../constants'
+
 export const fetchComments = () => {
     return (dispatch) => {
-        fetch('http://localhost:3000/comments')
+        fetch(ENDPOINT + 'comments')
             .then(resp => resp.json())
             .then(comments => dispatch({ type: 'FETCH_COMMENTS', payload: comments }))
     }
@@ -8,7 +10,7 @@ export const fetchComments = () => {
 
 export const addComment = (comment) => {
     return (dispatch) => {
-        fetch('http://localhost:3000/comments', {
+        fetch(ENDPOINT + 'comments', {
             method: 'POST',
             body: JSON.stringify(comment),
             headers: { 'Content-Type': 'application/json' }
@@ -20,7 +22,7 @@ export const addComment = (comment) => {
 
 export const increaseLikes = (commentId) => {
     return (dispatch) => {
-        fetch('http://localhost:3000/comments/' + commentId)
+        fetch(ENDPOINT + 'comments/' + commentId)
             .then(resp => resp.json())
             .then(json => {
                 let formData = {
@@ -36,7 +38,7 @@ export const increaseLikes = (commentId) => {
                     body: JSON.stringify(formData)
                 };
 
-                fetch("http://localhost:3000/comments/" + commentId, configObj)
+                fetch(ENDPOINT + 'comments/' + commentId, configObj)
                     .then(resp => resp.json())
                     .then(comment => dispatch({ type: 'INCREASE_LIKES', payload: comment }))
             })
@@ -45,7 +47,7 @@ export const increaseLikes = (commentId) => {
 
 export const increaseDislikes = (commentId) => {
     return (dispatch) => {
-        fetch('http://localhost:3000/comments/' + commentId)
+        fetch(ENDPOINT + 'comments' + commentId)
             .then(resp => resp.json())
             .then(json => {
                 let formData = {
@@ -61,7 +63,7 @@ export const increaseDislikes = (commentId) => {
                     body: JSON.stringify(formData)
                 };
 
-                fetch("http://localhost:3000/comments/" + commentId, configObj)
+                fetch("ENDPOINT + 'comments/" + commentId, configObj)
                     .then(resp => resp.json())
                     .then(comment => dispatch({ type: 'INCREASE_DISLIKES', payload: comment }))
             })
@@ -70,7 +72,7 @@ export const increaseDislikes = (commentId) => {
 
 export const increaseFunnyRating= (commentId) => {
     return (dispatch) => {
-        fetch('http://localhost:3000/comments/' + commentId)
+        fetch(ENDPOINT + 'comments/' + commentId)
             .then(resp => resp.json())
             .then(json => {
                 let formData = {
@@ -86,7 +88,7 @@ export const increaseFunnyRating= (commentId) => {
                     body: JSON.stringify(formData)
                 };
 
-                fetch("http://localhost:3000/comments/" + commentId, configObj)
+                fetch(ENDPOINT + 'comments/' + commentId, configObj)
                     .then(resp => resp.json())
                     .then(comment => dispatch({ type: 'INCREASE_FUNNY_RATING', payload: comment }))
             })
@@ -95,7 +97,7 @@ export const increaseFunnyRating= (commentId) => {
 
 export const increaseScaryRating= (commentId) => {
     return (dispatch) => {
-        fetch('http://localhost:3000/comments/' + commentId)
+        fetch(ENDPOINT + 'comments/' + commentId)
             .then(resp => resp.json())
             .then(json => {
                 let formData = {
@@ -111,7 +113,7 @@ export const increaseScaryRating= (commentId) => {
                     body: JSON.stringify(formData)
                 };
 
-                fetch("http://localhost:3000/comments/" + commentId, configObj)
+                fetch(ENDPOINT + 'comments/' + commentId, configObj)
                     .then(resp => resp.json())
                     .then(comment => dispatch({ type: 'INCREASE_SCARY_RATING', payload: comment }))
             })

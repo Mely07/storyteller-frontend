@@ -1,6 +1,8 @@
+import ENDPOINT from '../constants';
+
 export const signup = (user, history) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/users`, {
+    fetch(ENDPOINT + 'users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,7 +33,7 @@ export const signup = (user, history) => {
 
 export const login = (user, history) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/sessions`, {
+    fetch(ENDPOINT + 'sessions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -61,7 +63,7 @@ export const login = (user, history) => {
 
 export const checkLoggedIn = (callback) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/logged_in`, {
+    fetch('https://floating-reef-61427.herokuapp.com/logged_in', {
       credentials: 'include',
     })
       .then((res) => res.json())
@@ -71,13 +73,14 @@ export const checkLoggedIn = (callback) => {
           payload: { loggedIn: data.logged_in, currentUser: data.user },
         });
         callback();
-      });
+      })
+      .catch((error) => console.log(error) );
   };
 };
 
 export const logout = (history) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/logout`, {
+    fetch(ENDPOINT + 'logout', {
       method: 'DELETE',
       credentials: 'include',
     })
