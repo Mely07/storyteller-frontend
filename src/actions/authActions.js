@@ -63,7 +63,7 @@ export const login = (user, history) => {
 
 export const checkLoggedIn = (callback) => {
   return (dispatch) => {
-    fetch('https://floating-reef-61427.herokuapp.com/logged_in', {
+    fetch(ENDPOINT + 'logged_in', {
       credentials: 'include',
     })
       .then((res) => res.json())
