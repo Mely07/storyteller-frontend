@@ -39,7 +39,7 @@ class LogIn extends Component {
                         </div>
 
                         <div className="mb-3">
-                            <input placeholder="Password" className="form-control" type="text" value={this.state.password} onChange={this.OnChange} name="password" />
+                            <input placeholder="Password" className="form-control" type="password" value={this.state.password} onChange={this.OnChange} name="password" />
                             <small className="form-text bg-white text-danger">{this.state.passwordError}</small>
                             <small className="form-text bg-white text-danger">{this.props.errors && (<p>{this.props.errors.message}.</p>)}</small>
                         </div>

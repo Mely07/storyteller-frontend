@@ -62,13 +62,13 @@ class SignUp extends Component {
                         </div>
 
                         <div className="mb-3">
-                            <input placeholder="Password" className="form-control" type="text" value={this.state.password} onChange={this.OnChange} name="password" />
+                            <input placeholder="Password" className="form-control" type="password" value={this.state.password} onChange={this.OnChange} name="password" />
                             <small className="form-text bg-white text-danger">{this.state.passwordError}</small>
                             <small className="form-text bg-white text-danger">{ this.props.errors && (<p>Password {this.props.errors.password}.</p>)}</small>
                      </div>
 
                         <div className="mb-3">
-                            <input placeholder="Confirm Password" className="form-control" type="text" value={this.state.password_confirmation} onChange={this.OnChange} name="password_confirmation" />
+                            <input placeholder="Confirm Password" className="form-control" type="password" value={this.state.password_confirmation} onChange={this.OnChange} name="password_confirmation" />
                             <small className="form-text bg-white text-danger">{this.state.password_confirmationError}</small>
                             <small className="form-text bg-white text-danger">{ this.props.errors && (<p>Password Confirmation {this.props.errors.password_confirmation}.</p>)}</small>
                         </div>
