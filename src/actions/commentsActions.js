@@ -47,7 +47,7 @@ export const increaseLikes = (commentId) => {
 
 export const increaseDislikes = (commentId) => {
     return (dispatch) => {
-        fetch(ENDPOINT + 'comments' + commentId)
+        fetch(ENDPOINT + 'comments/' + commentId)
             .then(resp => resp.json())
             .then(json => {
                 let formData = {

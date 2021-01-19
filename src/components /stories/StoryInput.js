@@ -51,7 +51,7 @@ class StoryInput extends Component {
 
     render() {
         return (
-            <div className="row">
+            <div className="row" style="margin: 30PX 100px">
                 <div className="col-md-6">
                     <div>
                         <p className="text-secondary font-weight-bold text-warning">Add a new story:</p>
