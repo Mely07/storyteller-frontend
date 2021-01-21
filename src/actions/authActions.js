@@ -19,7 +19,7 @@ export const signup = (user, history) => {
             payload: { loggedIn: data.logged_in, currentUser: data.user },
 
           });
-          history.push(`/stories`);
+          history.push('/stories');
         }
         else {
           dispatch({
@@ -49,7 +49,7 @@ export const login = (user, history) => {
             payload: { loggedIn: data.logged_in, currentUser: data.user },
 
           });
-          history.push(`/stories`);
+          history.push('/stories');
         }
         else {
           dispatch({

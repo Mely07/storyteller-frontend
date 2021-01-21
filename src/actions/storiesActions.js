@@ -32,7 +32,7 @@ export const filterByGenre = (genre) => {
 
 export const fetchTopStory = () => {
     return (dispatch) => {
-        fetch(ENDPOINT + 'stories' + 'top')
+        fetch(ENDPOINT + 'stories' + '/top') 
             .then(resp => resp.json())
             .then(story => dispatch({ type: 'TOP_STORY', payload: story[0] }))
     }

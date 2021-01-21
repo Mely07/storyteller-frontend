@@ -63,7 +63,7 @@ export const increaseDislikes = (commentId) => {
                     body: JSON.stringify(formData)
                 };
 
-                fetch("ENDPOINT + 'comments/" + commentId, configObj)
+                fetch(ENDPOINT + 'comments/' + commentId, configObj)
                     .then(resp => resp.json())
                     .then(comment => dispatch({ type: 'INCREASE_DISLIKES', payload: comment }))
             })

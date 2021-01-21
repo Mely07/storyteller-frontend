@@ -9,7 +9,7 @@ class StoryInput extends Component {
         opening_line: '',
         image: '',
         genre: '',
-        author: this.props.user.username, 
+        author: this.props.user.username,
         openingLineError: '',
         imageError: '',
         genreError: ''
@@ -51,13 +51,19 @@ class StoryInput extends Component {
 
     render() {
         return (
-            <div className="row" style={{margin: '30px 100px'}}>
+            <div className="row" style={{ margin: '30px 100px' }}>
+
                 <div className="col-md-6">
-                    <div>
-                        <p className="text-secondary font-weight-bold text-warning">Add a new story:</p>
+                    <TopStory story={this.props.topStory} />
+                </div>
+
+                <div className="col-md-6">
+                    <div className="mt-2">
+                        {/* <p className="text-secondary font-weight-bold text-warning">Add a new story:</p> */}
+                        <br />
                         <form className="mt-2">
                             <div className="mb-3">
-                                <input placeholder="Opening line here..." className="form-control"  value={this.state.opening_line} onChange={this.handleOnChange} name="opening_line" />
+                                <input placeholder="Opening line here..." className="form-control" value={this.state.opening_line} onChange={this.handleOnChange} name="opening_line" />
                                 <small className="form-text text-danger">{this.state.openingLineError}</small>
                             </div>
 
@@ -66,25 +72,35 @@ class StoryInput extends Component {
                                 <small className="form-text text-danger">{this.state.imageError}</small>
                             </div>
 
-                            <div className="mb-3">
-                                <select className="custom-select d-block w-100" onChange={this.handleOnChange} name="genre">
-                                    <option selected="true" disabled="disabled">Choose a Genre</option>
-                                    <option>Comedy</option>
-                                    <option>Horror</option>
-                                    <option>Action</option>
-                                    <option>Fantasy</option>
-                                </select>
-                                <small className="form-text text-danger">{this.state.genreError}</small>
-                            </div>
+                            <b>Choose a Genre:</b>
 
-                            <button className="btn btn-secondary float-right" onClick={(event) => this.handleOnSubmit(event)}> Submit </button>
+                            <div className="form-check" onChange={this.handleOnChange} name="genre">
+                                <input className="form-check-input" type="radio" value="Comedy" name="genre" />
+                                <label className="form-check-label" for="Comedy">
+                                    Comedy
+                                </label>
+                                <br />
+                                <input className="form-check-input" type="radio" value="Horror" name="genre" />
+                                <label className="form-check-label" for="Horror">
+                                    Horror
+                                </label>
+                                <br />
+                                <input className="form-check-input" type="radio" value="Action" name="genre" />
+                                <label className="form-check-label" for="Action">
+                                    Action
+                                </label>
+                                <br />
+                                <input className="form-check-input" type="radio" value="Fantasy" name="genre" />
+                                <label className="form-check-label" for="genre">
+                                    Fantasy
+                                </label>
+                            </div>
+                            
+                            <button className="btn btn-secondary float-right" onClick={(event) => this.handleOnSubmit(event)}> Add New Story </button>
                         </form>
                     </div>
                 </div>
-                
-                <div className="col-md-3">
-                    <TopStory story={this.props.topStory} />
-                </div>
+
             </div>
 
         );
