@@ -72,9 +72,9 @@ class StoryInput extends Component {
                                 <small className="form-text text-danger">{this.state.imageError}</small>
                             </div>
 
-                            <b>Choose a Genre:</b>
+                            <p class="text-secondary">Choose a Genre:</p>
 
-                            <div className="form-check" onChange={this.handleOnChange} name="genre">
+                            <div className="form-check text-secondary" onChange={this.handleOnChange} name="genre">
                                 <input className="form-check-input" type="radio" value="Comedy" name="genre" />
                                 <label className="form-check-label" for="Comedy">
                                     Comedy
