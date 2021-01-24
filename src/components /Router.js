@@ -27,7 +27,7 @@ class Router extends Component {
 
         return (
             <div>
-                <NavBar />
+                {/* <NavBar /> */}
 
                 <Switch>
                     <Route exact path='/' component={Home} />
