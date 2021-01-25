@@ -33,8 +33,6 @@ class StoryInput extends Component {
         else if (this.state.image === '') {
             this.setState({ imageError: 'Image is required.' });
         }
-
-
         else if (this.state.genre === '') {
             this.setState({ genreError: 'Genre is required.' });
         }
@@ -53,11 +51,11 @@ class StoryInput extends Component {
         return (
             <div className="row" style={{ margin: '30px 100px' }}>
 
-                <div className="col-md-6">
+                <div className="col-md-4">
                     <TopStory story={this.props.topStory} />
                 </div>
 
-                <div className="col-md-6">
+                <div className="col-md-8">
                     <div className="mt-2">
                         {/* <p className="text-secondary font-weight-bold text-warning">Add a new story:</p> */}
                         <br />
@@ -95,7 +93,7 @@ class StoryInput extends Component {
                                     Fantasy
                                 </label>
                             </div>
-                            
+
                             <button className="btn btn-secondary float-right" onClick={(event) => this.handleOnSubmit(event)}> Add New Story </button>
                         </form>
                     </div>

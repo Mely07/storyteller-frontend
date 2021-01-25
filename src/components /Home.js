@@ -2,18 +2,12 @@ import React, { Component } from 'react';
 import LogIn from './LogIn';
 import SignUp from './SignUp';
 
-
-const title= {
-        position: "fixed",
-        top: "50%",
-        left: "50%",
-        // marginTop: "-50px",
-        // marginLeft: "-100px",
-        transform: "translate(-50%, -50%)",
-        color: "white",
-        fontSize: "150px"
-
-  };
+const center = {
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%, -50%)'
+}
 
 class Home extends Component {
     state = {
@@ -25,8 +19,6 @@ class Home extends Component {
         const x = document.getElementsByTagName("body")[0];
         x.style = 'background-image: url("https://www.wrl.org/wp-content/uploads/2020/04/fantasy_science_fiction_book_magic.jpg"); background-size: 100%';
     }
-
-    // https://miro.medium.com/max/10368/1*77kVLXT5wReVAW-kQYcpaw.jpeg
 
     componentWillUnmount() {
         const x = document.getElementsByTagName("body")[0];
@@ -43,18 +35,22 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
-                <div className="container text-center centered mt-2" style={title}>
-                    <h1 className="display-3" style={{fontSize: "120px"}}>Storyteller</h1>
-                    <button className="btn btn-small btn-link mt-0 text-warning" onClick={() => this.login()}> LogIn </button>
-                    {/* <li><h4 onClick={() => this.setState({renderForm: true})}>LogIn </h4></li> */}
+            <div className="text-center" style={center}>
+                <div >
+                    <h1 style={{ fontSize: "150px", color: "white" }}>Storyteller</h1>
+
                     {this.state.renderLogInForm && <LogIn history={this.props.history} />}
-                    <button className="btn btn-small btn-link mt-0 text-warning" onClick={() => this.signup()}> Sign Up</button>
+                    <div>
+                        <button className="btn btn-warning mr-3" onClick={() => this.login()}> LogIn </button>
+                        <button className="btn btn-warning" onClick={() => this.signup()}> Sign Up</button>
+                    </div>
+
                     {this.state.renderSignUpForm && <SignUp history={this.props.history} />}
+
                 </div>
             </div>
         );
     }
-}
 
+}
 export default Home;
