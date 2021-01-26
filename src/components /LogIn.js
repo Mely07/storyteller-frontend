@@ -53,7 +53,6 @@ class LogIn extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log('state in login:', state)
     return {
         errors: state.auth.errors
     }

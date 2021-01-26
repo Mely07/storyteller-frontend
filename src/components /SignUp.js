@@ -69,7 +69,7 @@ class SignUp extends Component {
                             <small className="form-text bg-white text-danger">{this.state.password_confirmationError}</small>
                         </div>
 
-                        <button className="btn btn-secondary my-2" onClick={(event) => this.OnClick(event)}> Submit </button>
+                        <button className="btn btn-secondary my-2 mr-3" onClick={(event) => this.OnClick(event)}> Submit </button>
                     </form>
                 </div>
             </div>
