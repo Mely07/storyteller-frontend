@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LogIn from './LogIn';
 import SignUp from './SignUp';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 const center = {
     position: 'absolute',
@@ -22,8 +23,6 @@ class Home extends Component {
         const x = document.getElementsByTagName("body")[0];
         x.classList.add('img-fluid')
         x.style = 'background-image: url("https://www.wrl.org/wp-content/uploads/2020/04/fantasy_science_fiction_book_magic.jpg"); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;'
-
-        //background-size: 100% class="img-fluid"
     }
 
     componentWillUnmount() {
@@ -42,15 +41,15 @@ class Home extends Component {
     render() {
 
         return (
-
             <div className="text-center" style={center}>
                 <div >
                     <h1 style={{ fontSize: "10vw", color: "white" }}>Storyteller</h1>
-                    {/* {this.state.renderLogInForm && <LogIn history={this.props.history} />}
-                    {this.state.renderSignUpForm && <SignUp history={this.props.history} />} */}
+
                     {this.props.loggedIn ? (
                         <>
-                            BACK TO STORIES HERE
+                            <div>
+                                <button className="btn btn-warning mr-3" onClick={() => this.props.history.goBack()}>BACK TO STORIES</button>
+                            </div>
                         </>
                     ) : (
                             <>

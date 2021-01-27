@@ -14,9 +14,6 @@ class StoryInput extends Component {
         imageError: '',
         genreError: ''
     }
-    // validateImage(image) {
-    // //regrex here 
-    // }
 
     handleOnChange = (e) => {
         let name = e.target.name
@@ -24,8 +21,10 @@ class StoryInput extends Component {
     }
 
     handleOnSubmit = (e) => {
-        // We can validate the data the user enters before we set it on the state, allowing us to block any invalid values and set another state property (for example, isInvalidNumber). 
         e.preventDefault();
+
+        let imagePattern = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;
+
 
         if (this.state.opening_line === '') {
             this.setState({ openingLineError: 'Opening line is required.' });
@@ -33,6 +32,11 @@ class StoryInput extends Component {
         else if (this.state.image === '') {
             this.setState({ imageError: 'Image is required.' });
         }
+
+        else if (!imagePattern.test(this.state.image)) {
+            this.setState({ imageError: 'Invalid Format.' });
+        }
+
         else if (this.state.genre === '') {
             this.setState({ genreError: 'Genre is required.' });
         }
@@ -57,7 +61,6 @@ class StoryInput extends Component {
 
                 <div className="col-md-8">
                     <div className="mt-2">
-                        {/* <p className="text-secondary font-weight-bold text-warning">Add a new story:</p> */}
                         <br />
                         <form className="mt-2">
                             <div className="mb-3">
