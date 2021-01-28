@@ -17,10 +17,10 @@ class LogIn extends Component {
     OnClick = (e) => {
         e.preventDefault();
 
-        if (this.state.username === '') {
+        if (this.state.username == '') {
             this.setState({ usernameError: 'Username is required.' });
         }
-        else if (this.state.password === '') {
+        else if (this.state.password == '') {
             this.setState({ passwordError: 'Password is required.' });
         }
         else {

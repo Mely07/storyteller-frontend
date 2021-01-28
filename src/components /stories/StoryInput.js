@@ -73,26 +73,26 @@ class StoryInput extends Component {
                                 <small className="form-text text-danger">{this.state.imageError}</small>
                             </div>
 
-                            <p class="text-secondary">Choose a Genre:</p>
+                            <p className="text-secondary">Choose a Genre:</p>
 
                             <div className="form-check text-secondary" onChange={this.handleOnChange} name="genre">
                                 <input className="form-check-input" type="radio" value="Comedy" name="genre" />
-                                <label className="form-check-label" for="Comedy">
+                                <label className="form-check-label" htmlFor="Comedy">
                                     Comedy
                                 </label>
                                 <br />
                                 <input className="form-check-input" type="radio" value="Horror" name="genre" />
-                                <label className="form-check-label" for="Horror">
+                                <label className="form-check-label" htmlFor="Horror">
                                     Horror
                                 </label>
                                 <br />
                                 <input className="form-check-input" type="radio" value="Action" name="genre" />
-                                <label className="form-check-label" for="Action">
+                                <label className="form-check-label" htmlFor="Action">
                                     Action
                                 </label>
                                 <br />
                                 <input className="form-check-input" type="radio" value="Fantasy" name="genre" />
-                                <label className="form-check-label" for="genre">
+                                <label className="form-check-label" htmlFor="genre">
                                     Fantasy
                                 </label>
                             </div>

@@ -3,6 +3,7 @@ import LogIn from './LogIn';
 import SignUp from './SignUp';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import {Link } from "react-router-dom";
 
 const center = {
     position: 'absolute',
@@ -48,7 +49,7 @@ class Home extends Component {
                     {this.props.loggedIn ? (
                         <>
                             <div>
-                                <button className="btn btn-warning mr-3" onClick={() => this.props.history.goBack()}>BACK TO STORIES</button>
+                                <Link to="/stories"><button className="btn btn-warning mr-3">BACK TO STORIES</button></Link>
                             </div>
                         </>
                     ) : (

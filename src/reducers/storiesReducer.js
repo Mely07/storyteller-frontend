@@ -2,6 +2,7 @@ export const storiesReducer = (state = { stories: [], loading: false }, action) 
     switch (action.type) {
         case 'FETCH_STORIES':
             return {
+                ...state,
                 stories: action.payload,
                 loading: false
             }
@@ -10,6 +11,7 @@ export const storiesReducer = (state = { stories: [], loading: false }, action) 
             return {
                 ...state,
                 stories: [...state.stories],
+                story: state.story,
                 loading: true
             }
 
