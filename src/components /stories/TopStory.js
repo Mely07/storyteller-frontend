@@ -8,7 +8,7 @@ const TopStory = (story) => {
     
     return (
         <div>
-            <p className="text-secondary font-weight-bold text-warning">Trending Story:</p>
+            <h4 className="text-secondary font-weight-bold text-warning">Trending Story:</h4>
             <div className="card rounded border-0">
                 <Link key={story.id} to={`/stories/${story.id}`}><img className="card-img-top border border-secondary rounded" src={story.image} alt="Card image cap"></img></Link>
 

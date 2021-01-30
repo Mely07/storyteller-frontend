@@ -55,50 +55,53 @@ class StoryInput extends Component {
         return (
             <div className="row" style={{ margin: '30px 100px' }}>
 
-                <div className="col-md-4">
+                <div className="col-md-6">
                     <TopStory story={this.props.topStory} />
                 </div>
+                <div className="col-md-.5"></div>
+                <div className="col-md-5">
 
-                <div className="col-md-8">
-                    <div className="mt-2">
+                    <div className="mt-4">
                         <br />
-                        <form className="mt-2">
-                            <div className="mb-3">
-                                <input placeholder="Opening line here..." className="form-control" value={this.state.opening_line} onChange={this.handleOnChange} name="opening_line" />
-                                <small className="form-text text-danger">{this.state.openingLineError}</small>
-                            </div>
+                        <div style={{ backgroundColor: 'grey' }}>
+                            <form className="">
+                                <div className="mt-4, mb-3">
+                                    <textarea placeholder="Opening line here..." className="form-control" value={this.state.opening_line} onChange={this.handleOnChange} name="opening_line" />
+                                    <small className="form-text text-danger">{this.state.openingLineError}</small>
+                                </div>
 
-                            <div className="mb-3">
-                                <input placeholder="Image URL" className="form-control" type="url" value={this.state.image} onChange={this.handleOnChange} name="image" required />
-                                <small className="form-text text-danger">{this.state.imageError}</small>
-                            </div>
+                                <div className="mb-3">
+                                    <input placeholder="Image URL" className="form-control" type="url" value={this.state.image} onChange={this.handleOnChange} name="image" required />
+                                    <small className="form-text text-danger">{this.state.imageError}</small>
+                                </div>
 
-                            <p className="text-secondary">Choose a Genre:</p>
+                                <p className="text-secondary">Choose a Genre:</p>
 
-                            <div className="form-check text-secondary" onChange={this.handleOnChange} name="genre">
-                                <input className="form-check-input" type="radio" value="Comedy" name="genre" />
-                                <label className="form-check-label" htmlFor="Comedy">
-                                    Comedy
+                                <div className="form-check text-secondary" onChange={this.handleOnChange} name="genre">
+                                    <input className="form-check-input" type="radio" value="Comedy" name="genre" />
+                                    <label className="form-check-label" htmlFor="Comedy">
+                                        Comedy
                                 </label>
-                                <br />
-                                <input className="form-check-input" type="radio" value="Horror" name="genre" />
-                                <label className="form-check-label" htmlFor="Horror">
-                                    Horror
+                                    <br />
+                                    <input className="form-check-input" type="radio" value="Horror" name="genre" />
+                                    <label className="form-check-label" htmlFor="Horror">
+                                        Horror
                                 </label>
-                                <br />
-                                <input className="form-check-input" type="radio" value="Action" name="genre" />
-                                <label className="form-check-label" htmlFor="Action">
-                                    Action
+                                    <br />
+                                    <input className="form-check-input" type="radio" value="Action" name="genre" />
+                                    <label className="form-check-label" htmlFor="Action">
+                                        Action
                                 </label>
-                                <br />
-                                <input className="form-check-input" type="radio" value="Fantasy" name="genre" />
-                                <label className="form-check-label" htmlFor="genre">
-                                    Fantasy
+                                    <br />
+                                    <input className="form-check-input" type="radio" value="Fantasy" name="genre" />
+                                    <label className="form-check-label" htmlFor="genre">
+                                        Fantasy
                                 </label>
-                            </div>
+                                </div>
 
-                            <button className="btn btn-secondary float-right" onClick={(event) => this.handleOnSubmit(event)}> Add New Story </button>
-                        </form>
+                                <button className="btn btn-secondary float-right" onClick={(event) => this.handleOnSubmit(event)}> Add New Story </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
