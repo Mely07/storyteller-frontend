@@ -25,20 +25,23 @@ class StoryInput extends Component {
 
         let imagePattern = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;
 
-
-        if (this.state.opening_line === '') {
-            this.setState({ openingLineError: 'Opening line is required.' });
+        if (this.state.image === '') {
+            this.setState({ imageError: 'image is required' });
         }
-        else if (this.state.image === '') {
-            this.setState({ imageError: 'Image is required.' });
+
+        else if (this.state.opening_line === '') {
+            this.setState({ imageError: '', genreError: '' });
+            this.setState({ openingLineError: 'opening line is required' });
         }
 
         else if (!imagePattern.test(this.state.image)) {
-            this.setState({ imageError: 'Invalid Format.' });
+            this.setState({ openingLineError: '', genreError: '' })
+            this.setState({ imageError: 'invalid format' });
         }
 
-        else if (this.state.genre === '') {
-            this.setState({ genreError: 'Genre is required.' });
+        else if (this.state.genre == '') {
+            this.setState({ imageError: '', openingLineError: '' })
+            this.setState({ genreError: 'genre is required' });
         }
         else {
             this.setState({ openingLineError: '', imageError: '', genreError: '' });
@@ -58,45 +61,48 @@ class StoryInput extends Component {
                 <div className="col-md-6">
                     <TopStory story={this.props.topStory} />
                 </div>
+                
                 <div className="col-md-.5"></div>
-                <div className="col-md-5">
 
-                    <div className="mt-4">
+                <div className="col-md-5 mt-4">
+                    <div>
                         <br />
-                        <div style={{ backgroundColor: 'grey' }}>
-                            <form className="">
-                                <div className="mt-4, mb-3">
-                                    <textarea placeholder="Opening line here..." className="form-control" value={this.state.opening_line} onChange={this.handleOnChange} name="opening_line" />
+                        <div>
+                            <form>
+                                <div className="mb-3">
+                                    <label for="image" className="form-label">Image URL:</label>
+                                    <input placeholder="Image URL" className="form-control" type="url" value={this.state.image} onChange={this.handleOnChange} id="image" name="image" required />
+                                    <small className="form-text text-danger">{this.state.imageError}</small>
+                                </div>
+                                <div className="mb-3">
+                                    <label for="opening_line" className="form-label">Opening Line(s):</label>
+                                    <textarea placeholder="Opening line(s) here..." className="form-control" id="opening_line" name="opening_line" value={this.state.opening_line} onChange={this.handleOnChange} rows="3"></textarea>
                                     <small className="form-text text-danger">{this.state.openingLineError}</small>
                                 </div>
 
-                                <div className="mb-3">
-                                    <input placeholder="Image URL" className="form-control" type="url" value={this.state.image} onChange={this.handleOnChange} name="image" required />
-                                    <small className="form-text text-danger">{this.state.imageError}</small>
-                                </div>
-
-                                <p className="text-secondary">Choose a Genre:</p>
+                                <p>Choose a Genre:</p>
 
                                 <div className="form-check text-secondary" onChange={this.handleOnChange} name="genre">
                                     <input className="form-check-input" type="radio" value="Comedy" name="genre" />
                                     <label className="form-check-label" htmlFor="Comedy">
                                         Comedy
-                                </label>
+                                    </label>
                                     <br />
                                     <input className="form-check-input" type="radio" value="Horror" name="genre" />
                                     <label className="form-check-label" htmlFor="Horror">
                                         Horror
-                                </label>
+                                    </label>
                                     <br />
                                     <input className="form-check-input" type="radio" value="Action" name="genre" />
                                     <label className="form-check-label" htmlFor="Action">
                                         Action
-                                </label>
+                                    </label>
                                     <br />
                                     <input className="form-check-input" type="radio" value="Fantasy" name="genre" />
                                     <label className="form-check-label" htmlFor="genre">
                                         Fantasy
-                                </label>
+                                    </label>
+                                    <small className="form-text text-danger">{this.state.genreError}</small>
                                 </div>
 
                                 <button className="btn btn-secondary float-right" onClick={(event) => this.handleOnSubmit(event)}> Add New Story </button>

@@ -7,6 +7,7 @@ class LogIn extends Component {
         username: '',
         password: '',
         usernameError: '',
+        passwordError: ''
     }
 
     OnChange = (e) => {
@@ -18,12 +19,15 @@ class LogIn extends Component {
         e.preventDefault();
 
         if (this.state.username == '') {
-            this.setState({ usernameError: 'Username is required.' });
+            this.setState({ passwordError: '' })
+            this.setState({ usernameError: 'username is required' });
         }
         else if (this.state.password == '') {
-            this.setState({ passwordError: 'Password is required.' });
+            this.setState({ usernameError: '' })
+            this.setState({ passwordError: 'password is required' });
         }
         else {
+            this.setState({ usernameError: '', passwordError: '' })
             this.props.login(this.state, this.props.history);
         }
     }
@@ -34,14 +38,16 @@ class LogIn extends Component {
                 <div className="col-md-4">
                     <form className="mt-4">
                         <div className="mb-3">
+                            <p className="text-warning">USERNAME</p>
                             <input placeholder="Username" className="form-control" type="text" value={this.state.username} onChange={this.OnChange} name="username" />
                             <small className="form-text bg-white text-danger">{this.state.usernameError}</small>
                         </div>
 
                         <div className="mb-3">
+                            <p className="text-warning">PASSWORD</p>
                             <input placeholder="Password" className="form-control" type="password" value={this.state.password} onChange={this.OnChange} name="password" />
                             <small className="form-text bg-white text-danger">{this.state.passwordError}</small>
-                            <small className="form-text bg-white text-danger">{this.props.errors && (<p>{this.props.errors.message}.</p>)}</small>
+                            <small className="form-text bg-white text-danger">{this.props.errors && (<p>{this.props.errors.message}</p>)}</small>
                         </div>
 
                         <button className="btn btn-secondary my-2" onClick={(event) => this.OnClick(event)}> Submit </button>

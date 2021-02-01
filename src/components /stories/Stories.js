@@ -18,11 +18,11 @@ const Stories = ({ topStory, stories, filterByGenre }) => {
     }
 
     return (
-
         <div className="mx-5">
             <StoryInput topStory={topStory} />
-            
+
             <div className="text-secondary font-weight-bold text-warning">Filter Stories by Genre:</div>
+            
             <div className="row">
                 <div className="col-md-3">
                     <form className="mt-2">

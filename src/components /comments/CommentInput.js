@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { addComment } from '../../actions/commentsActions'
 
 class CommentInput extends Component {
-
     state = {
         story_id: this.props.story_id,
         author: this.props.user.username,
@@ -18,10 +17,12 @@ class CommentInput extends Component {
 
     handleOnSubmit = (e) => {
         e.preventDefault();
+
         if (this.state.text === '') {
-            this.setState({ textError: 'Some text is required.' });
+            this.setState({ textError: 'some text is required' });
         }
         else {
+            this.setState({ textError: '' });
             this.props.addComment(this.state)
             this.setState({
                 text: ''
@@ -30,7 +31,6 @@ class CommentInput extends Component {
     }
 
     render() {
-
         return (
             <form>
                 <textarea className="form-control shadow-sm" rows="3" placeholder="Enter your lines here..." value={this.state.text} onChange={this.handleOnChange} name="text"></textarea>
@@ -38,7 +38,6 @@ class CommentInput extends Component {
                 <br />
                 <button className="btn btn-secondary my-2" onClick={(e) => this.handleOnSubmit(e)}> Submit </button>
             </form>
-
         );
     }
 }
